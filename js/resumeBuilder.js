@@ -65,6 +65,21 @@ var work = {
   ]
 };
 
+var projects = {
+  projects: [
+    {
+      title: 'Clipjump',
+      dates: '2013-16',
+      description: 'Clipboard manager for Windows with 100k downloads.',
+      images: ['images/clipjump_1.jpg', 'images/clipjump_2.jpg']
+    },
+    {
+      title: 'Portfolio',
+      dates: '2017',
+      description: 'Dynamic portfolio built in React'
+    }
+  ]
+};
 
 
 /*
@@ -155,8 +170,28 @@ work.display = function() {
   }
 };
 
+projects.display = function() {
+  if (projects.projects.length > 0) {
+    for (i in projects.projects) {
+      $("#projects").append(HTMLprojectStart);
+      var title = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+      var dates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+      var description = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+
+      $(".project-entry:last").append(title);
+      $(".project-entry:last").append(dates);
+      $(".project-entry:last").append(description);
+
+      for (img in projects.projects[i].images) {
+        var image = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
+        $(".project-entry:last").append(image);
+      }
+    }
+  }
+};
 
 // display stuff
 bio.display();
 education.display();
 work.display();
+projects.display();
