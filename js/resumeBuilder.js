@@ -6,7 +6,7 @@ var bio = {
     email: 'aviaryan123(at)gmail',
     github: 'aviaryan',
     twitter: 'aviaryan123',
-    location: 'India'
+    location: 'Gandhinagar, India'
   },
   welcomeMessage: 'I am a newly graduate full stack engineer currently working as a mentor at Udacity and Google Summer of Code.',
   skills: ['Golang', 'Backend', 'Python', 'Flask', 'React', 'Docker'],
@@ -51,14 +51,14 @@ var work = {
     {
       employer: 'Udacity',
       title: 'Mentor',
-      location: 'Remote',
+      location: 'Gandhinagar',
       dates: '2017',
       description: 'Mentored students on full stack and Udacity courses.'
     },
     {
       employer: 'Google Summer of Code',
       title: 'Software Developer',
-      location: 'Remote',
+      location: 'Patna',
       dates: '2016',
       description: 'Worked on a Flask backend server and Docker deployment.'
     },
@@ -190,8 +190,14 @@ projects.display = function() {
   }
 };
 
+function setupMap() {
+  $("#mapDiv").append(map);
+}
+
 // display stuff
 bio.display();
 education.display();
 work.display();
 projects.display();
+$('#mapDiv').append(googleMap);
+window.addEventListener('load', setupMap);
