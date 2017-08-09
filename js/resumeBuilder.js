@@ -39,6 +39,33 @@ var education = {
   ]
 };
 
+var work = {
+  jobs: [
+    {
+      employer: 'Appbase.io',
+      title: 'Infrastructure Engineer',
+      location: 'Delhi',
+      dates: '2017',
+      description: 'Worked on the Go backend infrastructure of Appbase.io'
+    },
+    {
+      employer: 'Udacity',
+      title: 'Mentor',
+      location: 'Remote',
+      dates: '2017',
+      description: 'Mentored students on full stack and Udacity courses.'
+    },
+    {
+      employer: 'Google Summer of Code',
+      title: 'Software Developer',
+      location: 'Remote',
+      dates: '2016',
+      description: 'Worked on a Flask backend server and Docker deployment.'
+    },
+  ]
+};
+
+
 
 /*
  * Display functions
@@ -109,9 +136,27 @@ education.display = function() {
   }
 };
 
+work.display = function() {
+  if (work.jobs.length > 0) {
+    $("#workExperience").append(HTMLworkStart);
+    for(i in work.jobs) {
+      var employer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+      var title = HTMLworkTitle.replace("%data%", work.jobs[i].title);
+      var location = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+      var worked = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+      var description = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+      var title = employer + title;
+
+      $(".work-entry:last").append(title);
+      $(".work-entry:last").append(location);
+      $(".work-entry:last").append(worked);
+      $(".work-entry:last").append(description);
+    }
+  }
+};
 
 
 // display stuff
 bio.display();
 education.display();
-
+work.display();
