@@ -14,17 +14,14 @@ var bio = {
 };
 
 var education = {
-  schools: [
-    {
-      name: 'IIIT Vadodara',
-      location: 'Vadodara',
-      degree: 'B.Tech',
-      majors: ['Computer Science'],
-      dates: '2014-18'
-    },
-  ],
-  onlineCourses: [
-    {
+  schools: [{
+    name: 'IIIT Vadodara',
+    location: 'Vadodara',
+    degree: 'B.Tech',
+    majors: ['Computer Science'],
+    dates: '2014-18'
+  }, ],
+  onlineCourses: [{
       title: 'Full Stack ND',
       school: 'Udacity',
       dates: 'July 2017',
@@ -40,8 +37,7 @@ var education = {
 };
 
 var work = {
-  jobs: [
-    {
+  jobs: [{
       employer: 'Appbase.io',
       title: 'Infrastructure Engineer',
       location: 'Delhi',
@@ -66,8 +62,7 @@ var work = {
 };
 
 var projects = {
-  projects: [
-    {
+  projects: [{
       title: 'Clipjump',
       dates: '2013-16',
       description: 'Clipboard manager for Windows with 100k downloads.',
@@ -158,7 +153,7 @@ work.display = function() {
       var location = HTMLworkLocation.replace('%data%', job.location);
       var worked = HTMLworkDates.replace('%data%', job.dates);
       var description = HTMLworkDescription.replace('%data%', job.description);
-      var title = employer + title;
+      title = employer + title;
 
       $('.work-entry:last').append(title, [location, worked, description]);
     });
