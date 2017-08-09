@@ -94,12 +94,13 @@ bio.display = function() {
   var bioPic = HTMLbioPic.replace('%data%', bio.biopic);
   var message = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
   // contacts
-  var contact = [];
-  contact.push(HTMLmobile.replace('%data%', bio.contacts.mobile));
-  contact.push(HTMLemail.replace('%data%', bio.contacts.email));
-  contact.push(HTMLgithub.replace('%data%', bio.contacts.github));
-  contact.push(HTMLtwitter.replace('%data%', bio.contacts.twitter));
-  contact.push(HTMLlocation.replace('%data%', bio.contacts.location));
+  var contact = [
+    HTMLmobile.replace('%data%', bio.contacts.mobile),
+    HTMLemail.replace('%data%', bio.contacts.email),
+    HTMLgithub.replace('%data%', bio.contacts.github),
+    HTMLtwitter.replace('%data%', bio.contacts.twitter),
+    HTMLlocation.replace('%data%', bio.contacts.location)
+  ];
 
   $('#header').prepend(role);
   $('#header').prepend(name);
@@ -130,10 +131,7 @@ education.display = function() {
       var location = HTMLschoolLocation.replace('%data%', s.location);
       var major = HTMLschoolMajor.replace('%data%', s.majors[0]);
 
-      $('.education-entry:last').append(name + degree);
-      $('.education-entry:last').append(dates);
-      $('.education-entry:last').append(location);
-      $('.education-entry:last').append(major);
+      $('.education-entry:last').append(name + degree, [dates, location, major]);
     });
     // online courses
     if (education.onlineCourses.length > 0) {
@@ -145,9 +143,7 @@ education.display = function() {
         var dates = HTMLonlineDates.replace('%data%', oc.dates);
         var url = HTMLonlineURL.replace('%data%', oc.url).replace('#', oc.url);
 
-        $('.education-entry:last').append(title + school);
-        $('.education-entry:last').append(dates);
-        $('.education-entry:last').append(url);
+        $('.education-entry:last').append(title + school, [dates, url]);
       });
     }
   }
@@ -164,10 +160,7 @@ work.display = function() {
       var description = HTMLworkDescription.replace('%data%', job.description);
       var title = employer + title;
 
-      $('.work-entry:last').append(title);
-      $('.work-entry:last').append(location);
-      $('.work-entry:last').append(worked);
-      $('.work-entry:last').append(description);
+      $('.work-entry:last').append(title, [location, worked, description]);
     });
   }
 };
@@ -180,9 +173,7 @@ projects.display = function() {
       var dates = HTMLprojectDates.replace('%data%', pj.dates);
       var description = HTMLprojectDescription.replace('%data%', pj.description);
 
-      $('.project-entry:last').append(title);
-      $('.project-entry:last').append(dates);
-      $('.project-entry:last').append(description);
+      $('.project-entry:last').append(title, [dates, description]);
       // IMAGES
       if (pj.images) {
         pj.images.forEach(function(img) {
