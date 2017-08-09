@@ -71,12 +71,14 @@ var projects = {
       title: 'Clipjump',
       dates: '2013-16',
       description: 'Clipboard manager for Windows with 100k downloads.',
-      images: ['images/clipjump_1.jpg', 'images/clipjump_2.jpg']
+      images: ['images/clipjump_1.jpg', 'images/clipjump_2.jpg'],
+      url: 'https://is.gd/clipjump'
     },
     {
       title: 'Portfolio',
       dates: '2017',
-      description: 'Dynamic portfolio built in React'
+      description: 'Dynamic portfolio built in React',
+      url: 'http://aviaryan.in/work'
     }
   ]
 };
@@ -174,7 +176,7 @@ projects.display = function() {
   if (projects.projects.length > 0) {
     projects.projects.forEach(function(pj) {
       $('#projects').append(HTMLprojectStart);
-      var title = HTMLprojectTitle.replace('%data%', pj.title);
+      var title = HTMLprojectTitle.replace('%data%', pj.title).replace('#', pj.url);
       var dates = HTMLprojectDates.replace('%data%', pj.dates);
       var description = HTMLprojectDescription.replace('%data%', pj.description);
 
